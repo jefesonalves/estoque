@@ -9,13 +9,13 @@ class Tipo(models.Model):
         verbose_name_plural = '01 - Cadastro de tipos de entrada'
 
     def __str__(self):
-        return self.descricao
+        return "{0}".format(self.descricao)
 
 class Movimentacao(models.Model):
     tipo = models.ForeignKey(Tipo, on_delete=models.CASCADE, verbose_name='Tipo de Movimentação')
     setor = models.CharField(max_length=150, blank=True, verbose_name='Setor do Destinatário')
     nome = models.ForeignKey(Requisitante, blank=True, on_delete=models.CASCADE, verbose_name='Nome do Requisitante')
-    quant = models.DecimalField(max_digits=9, decimal_places=3, verbose_name='Quantidade')
+    quant = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Quantidade')
     descricao_produto = models.ForeignKey(Produto, on_delete=models.CASCADE, verbose_name='Descrição do Produto')
     descricao_marca = models.ForeignKey(Marca, on_delete=models.CASCADE, verbose_name='Descrição da Marca')
     unidade = models.ForeignKey(UnidadeMedida, on_delete=models.CASCADE, verbose_name='Unidade de Medida')
@@ -26,5 +26,4 @@ class Movimentacao(models.Model):
         verbose_name_plural = '02 - Movimentações'
 
     def __str__(self):
-        return self.setor
-    # concatenar Tipo de entrada, quantidade e descrição
+        return "{0} {1} {2} {3} {4} {5} {6}".format(self.tipo, "-", self.quant, "-", self.descricao_produto, "-", self.descricao_marca)

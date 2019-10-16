@@ -10,4 +10,4 @@ class Requisitante(models.Model):
         verbose_name_plural = '01 - Cadastro de Requisitantes'
 
     def __str__(self):
-        return self.nome
+        return "{0}".format(self.nome)
