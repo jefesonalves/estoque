@@ -19,7 +19,6 @@ class Movimentacao(models.Model):
     descricao_produto = models.ForeignKey(Produto, on_delete=models.CASCADE, verbose_name='Descrição do Produto')
     descricao_marca = models.ForeignKey(Marca, on_delete=models.CASCADE, verbose_name='Descrição da Marca')
     unidade = models.ForeignKey(UnidadeMedida, on_delete=models.CASCADE, verbose_name='Unidade de Medida')
-    tombo = models.CharField(max_length=150, blank=True, verbose_name='Número do Tombo')
     num_serie_produto = models.CharField(max_length=150, blank=True, verbose_name='Número de Série')
 
 
